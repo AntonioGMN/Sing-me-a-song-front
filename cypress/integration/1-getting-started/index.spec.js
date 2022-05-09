@@ -2,7 +2,8 @@ import { faker } from "@faker-js/faker";
 
 describe("test n2n", () => {
 	it("total", () => {
-		//cy.reset();
+		cy.clearDB();
+
 		const dados = {
 			name: faker.name.findName(),
 			link: "https://www.youtube.com/watch?v=NrgmdOz227I",
@@ -24,7 +25,7 @@ describe("test n2n", () => {
 		cy.get("article div svg").first().click();
 		cy.wait("@upvote");
 
-		for (let i = 0; i < 8; i++) {
+		for (let i = 0; i < 7; i++) {
 			cy.intercept("post", "recommendations/*/downvote").as("downvote");
 			cy.get("svg").last().click();
 			cy.wait("@downvote");

@@ -11,12 +11,9 @@
 //
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
-// Cypress.Commands.add("reset", () => {
-// 	cy
-// 		.request("DELETE", "http://localhost:5000/recommendations/reset")
-// 		.as("resetDatabase");
-// 	cy.wait("@resetDatabase");
-// });
+Cypress.Commands.add("clearDB", () => {
+	cy.request("DELETE", "http://localhost:5000/recommendations/reset");
+});
 //
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
